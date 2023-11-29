@@ -22,6 +22,7 @@ namespace my_robot_driver{
             
             WbDeviceTag right_motor;
             WbDeviceTag left_motor;
+            //TODO: publish robot's stae during each step()
     };
 }// namespace def
 #endif
