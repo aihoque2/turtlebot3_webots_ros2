@@ -14,18 +14,19 @@ def generate_launch_description():
         ros2_supervisor=True
     )
 
-    my_robot_driver = WebotsController(
+    robot_driver = WebotsController(
         robot_name = 'my_robot',
         parameters = [
             {'robot_description': robot_description_path,
              'set_robot_state_publisher': True},
-        ]
+        ],
+        respawn=True
     )
 
     return LaunchDescription([
         webots,
         webots._supervisor,
-        my_robot_driver,
+        robot_driver,
         launch.actions.RegisterEventHandler(
             event_handler = launch.event_handlers.OnProcessExit(
                 target_action=webots,
